@@ -9,10 +9,38 @@
 
 #include "FileOperation.h"
 
+#include "files/myDatabase.h"
+#include "files/personal.h"
+#include "files/student.h"
+
+#include "zmq.h"
+
+struct Box
+{
+    int a;
+    int b;
+};
 
 int main() {
 
-    std::cout << " new new 操作文件开始 <-------------" << std::endl;
+    
+    // // allocate a char array
+    // char *buffer = new char[sizeof(Box) * 5];
+    // // cast a Box array pointer
+    // Box *p = reinterpret_cast<Box *>(buffer);
+
+    // // free the pointer? is it bad?
+    // // delete p;
+    // // delete[] p;
+
+    // cout << p << endl;
+
+    // return 0;
+
+    // Database<Personal>().run();
+    // return 0;
+
+    std::cout << "操作文件开始 <-------------" << std::endl;
 
     FileOperation fo;
     // fo.operation("/Users/taoyali/Desktop/codecs.txt");

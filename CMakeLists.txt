@@ -101,16 +101,24 @@ Message(status " " ${USE_MYMATH} " This is a USE_MYMATH")
 
 
 # 9. build项目中的库： 项目中的代码以库的方式被引用
-# add the MathFunctions library,Add a subdirectory to the build，将新加的子目录用于build 
-if(USE_MYMATH) 
-  # 需要重新定义USE_MYMATH变量
+        # add the MathFunctions library,Add a subdirectory to the build，将新加的子目录用于build 
+        
+# # 第一种方式
+# if(USE_MYMATH) 
+#   # 需要重新定义USE_MYMATH变量
+#   add_definitions(-DUSE_MYMATH)
+#   add_subdirectory(math)
+#   list(APPEND EXTRA_LIBS math)
+#   Message(status " " "${PROJECT_SOURCE_DIR}/math" " This is a Project_source_dir")
+# endif(USE_MYMATH) 
+
+# 第二种方式
+if(USE_MYMATH)
   add_definitions(-DUSE_MYMATH)
-  add_subdirectory(math)
-  list(APPEND EXTRA_LIBS math)
-  Message(status " " "${PROJECT_SOURCE_DIR}/math" " This is a Project_source_dir")
-endif(USE_MYMATH) 
-
-
+  add_library(math STATIC math/MathFunctions.cpp)
+  target_include_directories(math PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/math/)
+# list(APPEND EXTRA_LIBS math)
+endif(USE_MYMATH)
 
 
 
@@ -124,7 +132,6 @@ endif(USE_MYMATH)
 
 
 find_library(ZMQ libzmq.a REQUIRED PATHS /usr/local/Cellar/zeromq/4.3.4/lib/libzmq.a)
-
 set(LIBZMQ_INCLUDE_DIR /usr/local/Cellar/zeromq/4.3.4/include/)
 
 
@@ -139,6 +146,7 @@ target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_17)
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC 
                            ${PROJECT_BINARY_DIR}
                            ${LIBZMQ_INCLUDE_DIR}
+                           ${math}
                            )
     
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${EXTRA_LIBS} ${ZMQ}) 

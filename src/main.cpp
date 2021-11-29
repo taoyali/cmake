@@ -3,7 +3,8 @@
 #include <math.h>
 
 #ifdef USE_MYMATH
-#include "MathFunctions.h"
+// #include "MathFunctions.h"
+#include "math.h"
 #endif
 
 

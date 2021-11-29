@@ -76,15 +76,12 @@ file(GLOB_RECURSE SRC_FILES
 # 8. 添加config
 # configure_file 的作用将一份文件拷贝到另一个位置，并修改它的内容，使得在代码中使用CMake中定义的变量
 # 版本号：
-# configure_file(src/AppConfigure.h.in src/AppConfigure.h)
+configure_file(src/AppConfigure.h.in src/AppConfigure.h)
 
-configure_file (
-  "${PROJECT_SOURCE_DIR}/src/AppConfigure.h.in"
-  "${PROJECT_BINARY_DIR}/src/AppConfigure.h"
-  )
-# include_directories(${CMAKE_CURRENT_BINARY_DIR})
-
-set(Mymake_VERSION_MAJOR 1)
+# configure_file (
+#   "${PROJECT_SOURCE_DIR}/src/AppConfigure.h.in"
+#   "${PROJECT_BINARY_DIR}/src/AppConfigure.h"
+#   )
 
 # set 定义变量
 set(CMAKE_CXX_STANDARD 11)    
@@ -92,7 +89,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
 # 添加lib库配置     
-option(USE_MYMATH "Use tutorial provided math implementation" on) 
+option(USE_MYMATH "Use tutorial provided math implementation" off) 
 Message(status " " ${USE_MYMATH} " This is a USE_MYMATH")
 
 
@@ -102,7 +99,7 @@ Message(status " " ${USE_MYMATH} " This is a USE_MYMATH")
 
 # 9. build项目中的库： 项目中的代码以库的方式被引用
         # add the MathFunctions library,Add a subdirectory to the build，将新加的子目录用于build 
-        
+
 # # 第一种方式
 # if(USE_MYMATH) 
 #   # 需要重新定义USE_MYMATH变量

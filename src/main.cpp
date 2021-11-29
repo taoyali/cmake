@@ -16,6 +16,8 @@
 
 #include "zmq.h"
 
+#include "src/AppConfigure.h"
+
 struct Box
 {
     int a;
@@ -52,8 +54,7 @@ int main() {
 
     std::cout
         << "hello CMake" << std::endl;
-    // std::cout << Mymake_VERSION_MAJOR << " - " << std::endl;
-    // std::cout << Mymake_VERSION_MAJOR << " - " << Mymake_VERSION_MAJOR << std::endl;
+    std::cout << Mymake_VERSION_MAJOR << " - " << Mymake_VERSION_MINOR << std::endl;
 #ifdef USE_MYMATH
     std::cout << "my math " << sqrt(10) << std::endl;
 #else

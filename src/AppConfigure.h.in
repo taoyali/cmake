@@ -1,3 +1,2 @@
-#cmakedefine Mymake_VERSION_MAJOR @Mymake_VERSION_MAJOR@
-#cmakedefine Mymake_VERSION_MINOR @Mymake_VERSION_MINOR@
-// #cmakedefine USE_MYMATH
+#define Mymake_VERSION_MAJOR @Mymake_VERSION_MAJOR@
+#define Mymake_VERSION_MINOR @Mymake_VERSION_MINOR@

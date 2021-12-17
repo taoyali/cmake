@@ -21,7 +21,8 @@
 // #include <boost/boost/lexical_case.hpp>
 #include <yaml-cpp/yaml.h>
 
-std::string yaml = "/Users/tyl/project/C++/cmake/src/res/log.yml";
+std::string yaml =
+    "/Users/taoyali/taoyali/project/C++/C++/cmake/src/res/log.yml";
 YAML::Node node = YAML::LoadFile(yaml);
 
 struct Box
@@ -30,37 +31,49 @@ struct Box
     int b;
 };
 
+void yamlmap() {
+    std::cout << node << std::endl;
+
+    std::cout << "mainkey = " << node["key"]["mainkey"].as<std::string>()
+              << std::endl;
+    std::cout << "subkey = " << node["key"]["subkey"].as<std::string>() << std::endl;
+
+    //std::cout << "name = " << node["logs"]["name"].as<std::string>() << std::endl;
+}
+
 int main() {
 
-    
-    // // allocate a char array
-    // char *buffer = new char[sizeof(Box) * 5];
-    // // cast a Box array pointer
-    // Box *p = reinterpret_cast<Box *>(buffer);
+  yamlmap();
+  return 0;
 
-    // // free the pointer? is it bad?
-    // // delete p;
-    // // delete[] p;
+          // // allocate a char array
+          // char *buffer = new char[sizeof(Box) * 5];
+          // // cast a Box array pointer
+          // Box *p = reinterpret_cast<Box *>(buffer);
 
-    // cout << p << endl;
+          // // free the pointer? is it bad?
+          // // delete p;
+          // // delete[] p;
 
-    // return 0;
+          // cout << p << endl;
 
-    // Database<Personal>().run();
-    // return 0;
+          // return 0;
 
-    std::cout << "操作文件开始 <-------------" << std::endl;
+          // Database<Personal>().run();
+          // return 0;
 
-    FileOperation fo;
-    // fo.operation("/Users/taoyali/Desktop/codecs.txt");
-    fo.operation("res/resource.txt");
+          std::cout
+      << "操作文件开始 <-------------" << std::endl;
 
-    std::cout << "操作文件结束 ------------>" << std::endl;
+  FileOperation fo;
+  // fo.operation("/Users/taoyali/Desktop/codecs.txt");
+  fo.operation("res/resource.txt");
 
+  std::cout << "操作文件结束 ------------>" << std::endl;
 
-    std::cout
-        << "hello CMake" << std::endl;
-    std::cout << Mymake_VERSION_MAJOR << " - " << Mymake_VERSION_MINOR << std::endl;
+  std::cout << "hello CMake" << std::endl;
+  std::cout << Mymake_VERSION_MAJOR << " - " << Mymake_VERSION_MINOR
+            << std::endl;
 #ifdef USE_MYMATH
     std::cout << "my math " << sqrt(10) << std::endl;
 #else

@@ -9,3 +9,7 @@ logs:
       appenders:
           - type: FileLogAppender
           - type: StdoutLogAppender
+
+key: 
+    mainkey: yaml-cpp
+    subkey: yaml-cpp-item

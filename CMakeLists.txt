@@ -37,8 +37,9 @@ file(GLOB_RECURSE SRC_FILES
     "${PROJECT_SOURCE_DIR}/src/*.cc"
 )
 
-
-
+add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES})
+# 打开C++17的支持
+target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_17)
 
 
 
@@ -89,7 +90,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 
 # 添加lib库配置     
-option(USE_MYMATH "Use tutorial provided math implementation" off) 
+option(USE_MYMATH "Use tutorial provided math implementation" on) 
 Message(status " " ${USE_MYMATH} " This is a USE_MYMATH")
 
 
@@ -100,7 +101,7 @@ Message(status " " ${USE_MYMATH} " This is a USE_MYMATH")
 # 9. build项目中的库： 项目中的代码以库的方式被引用
         # add the MathFunctions library,Add a subdirectory to the build，将新加的子目录用于build 
 
-# # 第一种方式
+# # 第一种方式: 以子模块形式添加，需要在对应目录中添加子CMakeLists.txt文件
 # if(USE_MYMATH) 
 #   # 需要重新定义USE_MYMATH变量
 #   add_definitions(-DUSE_MYMATH)
@@ -128,37 +129,44 @@ endif(USE_MYMATH)
 #    - 4. target_link_libraries()          //  指明target依赖的库
 
 
-find_library(ZMQ libzmq.a REQUIRED PATHS /usr/local/Cellar/zeromq/4.3.4/lib/libzmq.a)
-set(LIBZMQ_INCLUDE_DIR /usr/local/Cellar/zeromq/4.3.4/include/)
+# find_library(ZMQ libzmq.a REQUIRED PATHS /usr/local/Cellar/zeromq/4.3.4/lib/libzmq.a)
+# set(LIBZMQ_INCLUDE_DIR /usr/local/Cellar/zeromq/4.3.4/include/)
 
-
-add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES})
-# 打开C++17的支持
-target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_17)
+set(YAMLCPP_DIRS /Users/taoyali/dependency)
+set(LIBYAMLCPP_INCLUDE_DIR ${YAMLCPP_DIRS}/include)
+find_library(YAMLCPP libyaml-cpp.a ${YAMLCPP_DIRS}/lib)
 
 
 # target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${LIBZMQ_INCLUDE_DIR})
 # target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${libzmq}) 
 
+
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC 
                            ${PROJECT_BINARY_DIR}
-                           ${LIBZMQ_INCLUDE_DIR}
+                          #  ${LIBZMQ_INCLUDE_DIR}
+                           ${LIBYAMLCPP_INCLUDE_DIR}
                            ${math}
                            )
     
-target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${EXTRA_LIBS} ${ZMQ}) 
+
+message(files " " ${CMAKE_PROJECT_INCLUDE} " ")
+
+# target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${EXTRA_LIBS} ${ZMQ}) 
+target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC 
+                      ${EXTRA_LIBS} 
+                      ${YAMLCPP} 
+                      )
 
 
+# include_directories(/usr/local/Cellar/boost/1.76.0/include/boost)
+# link_directories(/usr/local/Cellar/boost/1.76.0/lib)
 
-include_directories(/usr/local/Cellar/boost/1.76.0/include/boost)
-link_directories(/usr/local/Cellar/boost/1.76.0/lib)
 
+# include_directories(/Users/taoyali/project/C++/sylar/yaml-cpp/include)
+# link_directories(/Users/taoyali/project/C++/sylar/yaml-cpp/build/lib)
+# find_package(yaml-cpp REQUIRED)
 
-include_directories(/Users/taoyali/project/C++/sylar/yaml-cpp/include)
-link_directories(/Users/taoyali/project/C++/sylar/yaml-cpp/build/lib)
-find_package(yaml-cpp REQUIRED)
-
-target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${YAML_CPP_LIBRARIES})
+# target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${YAML_CPP_LIBRARIES})
 
 
 # include_directories("${PROJECT_BINARY_DIR}")

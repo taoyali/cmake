@@ -150,6 +150,17 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${EXTRA_LIBS} ${ZMQ})
 
 
 
+include_directories(/usr/local/Cellar/boost/1.76.0/include/boost)
+link_directories(/usr/local/Cellar/boost/1.76.0/lib)
+
+
+#include_directories(/Users/taoyali/project/C++/sylar/yaml-cpp/include/yaml-cpp)
+#link_directories(/Users/taoyali/project/C++/sylar/yaml-cpp/build/lib)
+
+
+find_package(yaml-cpp REQUIRED)
+include_directories(${YAML_INCLUDE_DIRS})
+target_link_libraries(${YAML_CPP_LIBRARIES})
 
 # include_directories("${PROJECT_BINARY_DIR}")
 

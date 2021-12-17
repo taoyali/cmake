@@ -18,6 +18,12 @@
 
 #include "src/AppConfigure.h"
 
+// #include <boost/boost/lexical_case.hpp>
+#include <yaml-cpp/yaml.h>
+
+std::string yaml = "1234567";
+YAML::Node node = YAML::Load(&yaml);
+
 struct Box
 {
     int a;

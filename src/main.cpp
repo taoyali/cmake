@@ -22,7 +22,7 @@
 #include <yaml-cpp/yaml.h>
 
 std::string yaml = "1234567";
-YAML::Node node = YAML::Load(&yaml);
+YAML::Node node = YAML::LoadFile("1122222");
 
 struct Box
 {

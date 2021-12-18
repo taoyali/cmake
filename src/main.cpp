@@ -14,15 +14,15 @@
 #include "files/personal.h"
 #include "files/student.h"
 
-#include "zmq.h"
+// #include "zmq.h"
 
 #include "src/AppConfigure.h"
 
 // #include <boost/boost/lexical_case.hpp>
 #include <yaml-cpp/yaml.h>
 
-std::string yaml = "1234567";
-YAML::Node node = YAML::LoadFile("1122222");
+std::string yaml = "/Users/tyl/project/C++/cmake/src/res/log.yml";
+YAML::Node node = YAML::LoadFile(yaml);
 
 struct Box
 {

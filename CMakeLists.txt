@@ -1,13 +1,13 @@
-# 1. cmake version： 指定cmake版本
+# 1 配置项目信息
+# 1.1 cmake version： 指定cmake版本
 cmake_minimum_required(VERSION 3.10)
-
-
-
-
-# 2. project name：指定项目名称，一般和项目的文件夹名称对应
+# 1.2 project name：指定项目名称，一般和项目的文件夹名称对应
 project(Mymake VERSION 1.0)
 
 
+# 2. 设置全局变量，方便后期使用
+# 将依赖的三方库的路径导入
+set(DEPENDENCY_DIRS /Users/taoyali/dependency)
 
 
 # 3. head file path： 头文件目录
@@ -133,9 +133,9 @@ endif(USE_MYMATH)
 # find_library(ZMQ libzmq.a REQUIRED PATHS /usr/local/Cellar/zeromq/4.3.4/lib/libzmq.a)
 # set(LIBZMQ_INCLUDE_DIR /usr/local/Cellar/zeromq/4.3.4/include/)
 
-set(YAMLCPP_DIRS /Users/taoyali/dependency)
-set(LIBYAMLCPP_INCLUDE_DIR ${YAMLCPP_DIRS}/include)
-find_library(YAMLCPP libyaml-cpp.a ${YAMLCPP_DIRS}/lib)
+# 依赖开源库yaml-cpp
+set(LIBYAMLCPP_INCLUDE_DIR ${DEPENDENCY_DIRS}/include)
+find_library(YAMLCPP libyaml-cpp.a ${DEPENDENCY_DIRS}/lib)
 
 
 # target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${LIBZMQ_INCLUDE_DIR})

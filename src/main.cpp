@@ -21,9 +21,11 @@
 // #include <boost/boost/lexical_case.hpp>
 #include <yaml-cpp/yaml.h>
 
-std::string yaml =
-    "/Users/taoyali/taoyali/project/C++/C++/cmake/src/res/log.yml";
-YAML::Node node = YAML::LoadFile(yaml);
+// std::string yaml = "/Users/taoyali/taoyali/project/C++/cmake/src/res/log.yml";
+
+#include "config/filePathConfig.h"
+// 相对路径
+YAML::Node node = YAML::LoadFile(Config::yamlConfigFile);
 
 struct Box
 {

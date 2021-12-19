@@ -35,6 +35,7 @@ file(GLOB_RECURSE SRC_FILES
     "${PROJECT_SOURCE_DIR}/src/files/*.cpp"
     "${PROJECT_SOURCE_DIR}/src/*.c"
     "${PROJECT_SOURCE_DIR}/src/*.cc"
+    "${PROJECT_SOURCE_DIR}/src/config/*h"
 )
 
 add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES})

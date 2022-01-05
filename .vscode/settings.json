@@ -2,6 +2,7 @@
     "files.associations": {
         "fstream": "cpp",
         "new": "cpp",
-        "__config": "cpp"
+        "__config": "cpp",
+        "string": "cpp"
     }
 }

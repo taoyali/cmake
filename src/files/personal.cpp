@@ -35,6 +35,10 @@ void Personal::readFromFile(fstream& in) {
     in.read(city, cityLen);
     in.read(reinterpret_cast<char*>(&year), sizeof(int));
     in.read(reinterpret_cast<char *>(&salary), sizeof(int));
+
+    writeLegibly(std::cout);
+    std::cout << std::endl;
+
     cout << "person readFromFile end" << endl;
 }
 

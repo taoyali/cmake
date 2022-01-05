@@ -13,9 +13,10 @@ void FileOperation::operation(string filePath)
 
     char ifsData[100];
     ifstream ifs;
-    ifs.open("res/res.txt");
+    ifs.open("/res/resource.txt");
     ifs >> ifsData;
     cout << "res/res.txt data = " << ifsData << endl;
+    
 
     // 以写的模式打开文件
     ofstream outfile;
@@ -40,12 +41,10 @@ void FileOperation::operation(string filePath)
     ifstream infile;
     infile.open(filePath, ios::out | ios::in);
     cout << "从 " << filePath << " 读取数据" << endl;
-    infile >> data;
+    char newData[100] = {};
+    infile >> newData;
     // 读取的输出数据，此处cout是屏幕
-    cout << data << endl;
-
-    infile >> data;
-    cout << data << endl;
+    cout << newData << endl;
 
     infile.close();
 }

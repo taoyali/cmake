@@ -14,6 +14,12 @@
 #include "files/personal.h"
 #include "files/student.h"
 
+#include <filesystem>
+#include <stdio.h>
+
+
+#include "testAction.h"
+
 // #include "zmq.h"
 
 #include "src/AppConfigure.h"
@@ -25,7 +31,8 @@
 
 #include "config/filePathConfig.h"
 // 相对路径
-YAML::Node node = YAML::LoadFile(Config::yamlConfigFile);
+// YAML::Node node = YAML::LoadFile(Config::yamlConfigFile);
+YAML::Node node;
 
 struct Box
 {
@@ -43,63 +50,100 @@ void yamlmap() {
     //std::cout << "name = " << node["logs"]["name"].as<std::string>() << std::endl;
 }
 
-int main() {
+void openFile() {
+  char* filePath = "/res/resource.txt";
+  // char* filePath = "/Users/tyl/Desktop/file.txt";
+  ifstream ifs(filePath, ios::in);
+  if (ifs) {
+    char data[1000];
+    ifs >> data;
+    cout << data << endl;
+    } else {
+      cout << "文件打开失败" << endl;
+    }
+    
+    
 
-  yamlmap();
-  return 0;
+    // FILE *file;
+    // if (file = fopen(filePath, "r"))
+    // {
+    //     while (file->read())
+    //     {
+            
+    //     }
+        
+    //     std::cout 
+    // }
+    
+}
 
-          // // allocate a char array
-          // char *buffer = new char[sizeof(Box) * 5];
-          // // cast a Box array pointer
-          // Box *p = reinterpret_cast<Box *>(buffer);
-
-          // // free the pointer? is it bad?
-          // // delete p;
-          // // delete[] p;
-
-          // cout << p << endl;
-
-          // return 0;
-
-          // Database<Personal>().run();
-          // return 0;
-
-          std::cout
-      << "操作文件开始 <-------------" << std::endl;
+void fileOperation() {
+  std::cout << "操作文件开始 <-------------" << std::endl;
 
   FileOperation fo;
   // fo.operation("/Users/taoyali/Desktop/codecs.txt");
   fo.operation("res/resource.txt");
 
   std::cout << "操作文件结束 ------------>" << std::endl;
+}
 
+void cmakeBuildTest() {
   std::cout << "hello CMake" << std::endl;
   std::cout << Mymake_VERSION_MAJOR << " - " << Mymake_VERSION_MINOR
             << std::endl;
 #ifdef USE_MYMATH
-    std::cout << "my math " << sqrt(10) << std::endl;
+  std::cout << "my math " << sqrt(10) << std::endl;
 #else
-    std::cout << "std math " << sqrt(10) << std::endl;
+  std::cout << "std math " << sqrt(10) << std::endl;
 #endif
 
-    std::cout << "end" << std::endl;
+  std::cout << "end" << std::endl;
+}
 
-    char a[] = "RUNOOB";
-    std::cout << "RUNOOB 字符串的length = " << strlen(a) << std::endl;
-    std::cout << a << std::endl;
+void charTest() {
+  char a[] = "RUNOOB";
+  std::cout << "RUNOOB 字符串的length = " << strlen(a) << std::endl;
+  std::cout << a << std::endl;
+
+  char b[10] = "abcde";
+
+  std::cout << "b + a = " << strcat(b, a) << std::endl;
+
+  strcpy(b, a);
+  std::cout << b << std::endl;
+
+  std::cout << " a == b ?? " << (strcmp(a, b) ? "是" : "否") << std::endl;
+
+  std::cout << "a 中第一个N的位置 index = " << (strchr(a, 'N')) << std::endl;
+}
+
+void dbTest() {
+  Database<Personal>().run();
+}
 
 
-    char b[10] = "abcde";
 
-    std::cout << "b + a = " << strcat(b, a) << std::endl;
+int main() {
 
-    strcpy(b, a);
-    std::cout << b << std::endl;
+  std::cout << __FILE__ << std::endl;
 
-    std::cout << " a == b ?? " << (strcmp(a, b) ? "是" : "否") << std::endl;
+  TestAction::testConst();
 
-    std::cout << "a 中第一个N的位置 index = " << (strchr(a, 'N')) << std::endl;
-    
+  TestAction::testActionRAII();
+
+
+  //  yamlmap();
+  //    return 0;
+
+  // openFile();
+
+  // dbTest();
+
+  // fileOperation();
+
+  // cmakeBuildTest();
+
+  // charTest();  
 }
 
 // #include <iostream>

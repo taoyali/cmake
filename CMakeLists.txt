@@ -7,8 +7,8 @@ project(Mymake VERSION 1.0)
 
 # 2. 设置全局变量，方便后期使用
 # 将依赖的三方库的路径导入
-set(DEPENDENCY_DIRS /Users/taoyali/dependency)
-
+#set(DEPENDENCY_DIRS /Users/taoyali/dependency)
+set(DEPENDENCY_DIRS /usr/local/Cellar/yaml-cpp/0.6.3_1)
 
 # 3. head file path： 头文件目录
 # include_directories(
@@ -35,7 +35,7 @@ file(GLOB_RECURSE SRC_FILES
     "${PROJECT_SOURCE_DIR}/src/files/*.cpp"
     "${PROJECT_SOURCE_DIR}/src/*.c"
     "${PROJECT_SOURCE_DIR}/src/*.cc"
-    "${PROJECT_SOURCE_DIR}/src/config/*h"
+    "${PROJECT_SOURCE_DIR}/src/config/*.h"
 )
 
 add_executable(${CMAKE_PROJECT_NAME} ${SRC_FILES})

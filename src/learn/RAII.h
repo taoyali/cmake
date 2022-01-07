@@ -2,15 +2,17 @@
 
 // extern void testContainerRAII();
 
-    class MyPort {
+class MyPort {
   friend void testContainerRAII();
 
- private:
+private:
   /* data */
   int m_text;
   void doSomething();
+  int testAge = 1;
+  int m_test{0};
 
- public:
+public:
   MyPort(/* args */);
   ~MyPort();
 };

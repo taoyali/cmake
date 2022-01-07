@@ -1,19 +1,13 @@
 #include "RAII.h"
 #include <iostream>
-#include <string>
 #include <map>
+#include <string>
 
-MyPort::MyPort() {
-    m_text = 10;
-}
+MyPort::MyPort() { m_text = 10; }
 
-MyPort::~MyPort() {
+MyPort::~MyPort() {}
 
-}
-
-void MyPort::doSomething() {
-    std::cout << " server1 :  80" << std::endl;
-}
+void MyPort::doSomething() { std::cout << " server1 :  80" << std::endl; }
 
 void testRAII() {
   std::shared_ptr<MyPort> port1(new MyPort);
@@ -27,13 +21,13 @@ void testRAII() {
   std::cout << "port count = " << port1.use_count() << std::endl;
 }
 
-void testContainerRAII() { 
-    std::map<std::string, MyPort> portMap;
-    
-    MyPort *port = new MyPort;
-    portMap["port"] = *port;
+void testContainerRAII() {
+  std::map<std::string, MyPort> portMap;
 
-    std::cout << " m_test = " << port->m_text << std::endl;
+  MyPort *port = new MyPort;
+  portMap["port"] = *port;
 
-    std::cout << "testContainerRAII" << std::endl;
+  std::cout << " m_test = " << port->m_text << std::endl;
+
+  std::cout << "testContainerRAII" << std::endl;
 }

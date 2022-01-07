@@ -3,6 +3,7 @@
         "fstream": "cpp",
         "new": "cpp",
         "__config": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "map": "cpp"
     }
 }

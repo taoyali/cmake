@@ -131,6 +131,8 @@ int main() {
 
   TestAction::testActionRAII();
 
+  TestAction::testForEach();
+
 
   //  yamlmap();
   //    return 0;

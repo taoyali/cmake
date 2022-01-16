@@ -8,7 +8,7 @@ project(Mymake VERSION 1.0)
 # 2. 设置全局变量，方便后期使用
 # 将依赖的三方库的路径导入
 #set(DEPENDENCY_DIRS /Users/taoyali/dependency)
-set(DEPENDENCY_DIRS /usr/local/Cellar/yaml-cpp/0.6.3_1)
+#set(DEPENDENCY_DIRS /usr/local/Cellar/yaml-cpp/0.6.3_1)
 
 # 3. head file path： 头文件目录
 # include_directories(
@@ -134,8 +134,8 @@ endif(USE_MYMATH)
 # set(LIBZMQ_INCLUDE_DIR /usr/local/Cellar/zeromq/4.3.4/include/)
 
 # 依赖开源库yaml-cpp
-set(LIBYAMLCPP_INCLUDE_DIR ${DEPENDENCY_DIRS}/include)
-find_library(YAMLCPP libyaml-cpp.a ${DEPENDENCY_DIRS}/lib)
+#set(LIBYAMLCPP_INCLUDE_DIR ${DEPENDENCY_DIRS}/include)
+#find_library(YAMLCPP libyaml-cpp.a ${DEPENDENCY_DIRS}/lib)
 
 
 # target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC ${LIBZMQ_INCLUDE_DIR})
@@ -145,7 +145,7 @@ find_library(YAMLCPP libyaml-cpp.a ${DEPENDENCY_DIRS}/lib)
 target_include_directories(${CMAKE_PROJECT_NAME} PUBLIC 
                            ${PROJECT_BINARY_DIR}
                           #  ${LIBZMQ_INCLUDE_DIR}
-                           ${LIBYAMLCPP_INCLUDE_DIR}
+                          # ${LIBYAMLCPP_INCLUDE_DIR}
                            ${math}
                            )
     
@@ -155,7 +155,7 @@ message(files " " ${CMAKE_PROJECT_INCLUDE} " ")
 # target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC ${EXTRA_LIBS} ${ZMQ}) 
 target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC 
                       ${EXTRA_LIBS} 
-                      ${YAMLCPP} 
+                      # ${YAMLCPP} 
                       )
 
 

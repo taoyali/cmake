@@ -77,13 +77,14 @@ target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_17)
 
 # 8. 添加config
 # configure_file 的作用将一份文件拷贝到另一个位置，并修改它的内容，使得在代码中使用CMake中定义的变量
-# 版本号：
-configure_file(src/AppConfigure.h.in src/AppConfigure.h)
+configure_file (
+  "${PROJECT_SOURCE_DIR}/src/AppConfigure.h.in"
+  "${PROJECT_BINARY_DIR}/src/AppConfigure.h"
+  )
 
-# configure_file (
-#   "${PROJECT_SOURCE_DIR}/src/AppConfigure.h.in"
-#   "${PROJECT_BINARY_DIR}/src/AppConfigure.h"
-#   )
+# set AppConfigure.h.in中的字段值
+set(Mymake_VERSION_MAJOR 01)
+set(Mymake_VERSION_MINOR 10)
 
 # set 定义变量
 set(CMAKE_CXX_STANDARD 11)    

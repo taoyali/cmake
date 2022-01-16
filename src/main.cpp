@@ -1,5 +1,5 @@
 #include <iostream>
-#include "AppConfigure.h"
+#include "src/AppConfigure.h"
 #include <math.h>
 
 #ifdef USE_MYMATH
@@ -75,7 +75,7 @@ void fileOperation() {
 
 void cmakeBuildTest() {
   std::cout << "hello CMake" << std::endl;
-  std::cout << Mymake_VERSION_MAJOR << " - " << Mymake_VERSION_MINOR
+  std::cout << " mycmake version code: " << Mymake_VERSION_MAJOR << " - " << Mymake_VERSION_MINOR
             << std::endl;
 #ifdef USE_MYMATH
   std::cout << "my math " << sqrt(10) << std::endl;
@@ -129,7 +129,7 @@ int main() {
 
   // fileOperation();
 
-  // cmakeBuildTest();
+   cmakeBuildTest();
 
   // charTest();  
 }

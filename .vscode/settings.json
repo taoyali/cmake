@@ -4,6 +4,7 @@
         "new": "cpp",
         "__config": "cpp",
         "string": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "*.in": "cpp"
     }
 }

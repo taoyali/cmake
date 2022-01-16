@@ -83,8 +83,8 @@ configure_file (
   )
 
 # set AppConfigure.h.in中的字段值
-set(Mymake_VERSION_MAJOR 01)
-set(Mymake_VERSION_MINOR 10)
+set(Mymake_VERSION_MAJOR 1)
+set(Mymake_VERSION_MINOR 0)
 
 # set 定义变量
 set(CMAKE_CXX_STANDARD 11)    
